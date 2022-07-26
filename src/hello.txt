@@ -1,0 +1,1 @@
+this is a test file to see if aws-exports.js needs src to exist as a folder first
