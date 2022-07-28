@@ -10,14 +10,14 @@ def handler(event, context):
 
   body = {
       'message': 'Hello, the current time is ' + str(current_time),
-      'open': str(dictionaryInfo[0]),
-      'close': str(dictionaryInfo[1]),
-      'bid': str(dictionaryInfo[2]),
-      'ask':str(dictionaryInfo[3]),
-      'volume': str(dictionaryInfo[4]),
-      'pegRatio': str(dictionaryInfo[5]),
-      'trailingEps': str(dictionaryInfo[6]),
-      'fowardEps': str(dictionaryInfo[7])
+      'open': str(dictionaryInfo['open']),
+      'close': str(dictionaryInfo['close']),
+      'bid': str(dictionaryInfo['bid']),
+      'ask':str(dictionaryInfo['ask']),
+      'volume': str(dictionaryInfo['volume']),
+      'pegRatio': str(dictionaryInfo['pegRatio']),
+      'trailingEps': str(dictionaryInfo['trailingEps']),
+      'forwardEps': str(dictionaryInfo['forwardEps'])
     }
 
   response = {
