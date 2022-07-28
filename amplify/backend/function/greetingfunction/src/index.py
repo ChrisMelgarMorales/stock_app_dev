@@ -1,6 +1,7 @@
 import json
 import datetime
 import yfinance as yf
+import numpy
 def handler(event, context):
 
   stockInfo = yf.Ticker("GOOG")
@@ -12,7 +13,7 @@ def handler(event, context):
       'open': str(dictionaryInfo[0]),
       'close': str(dictionaryInfo[1]),
       'bid': str(dictionaryInfo[2]),
-      'ask':str(dictionaryInfo[3])
+      'ask':str(dictionaryInfo[3]),
       'volume': str(dictionaryInfo[4]),
       'pegRatio': str(dictionaryInfo[5]),
       'trailingEps': str(dictionaryInfo[6]),
