@@ -11,7 +11,7 @@ def handler(event, context):
   body = {
       'message': 'Hello, the current time is ' + str(current_time),
       'open': str(dictionaryInfo['open']),
-      'close': str(dictionaryInfo['close']),
+      'close': str(dictionaryInfo['previousClose']),
       'bid': str(dictionaryInfo['bid']),
       'ask':str(dictionaryInfo['ask']),
       'volume': str(dictionaryInfo['volume']),
