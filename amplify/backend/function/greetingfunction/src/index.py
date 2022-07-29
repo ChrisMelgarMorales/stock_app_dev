@@ -9,6 +9,7 @@ def handler(event, context):
   current_time = datetime.datetime.now().time()
 
   body = {
+      'id': "1",
       'message': 'Hello, the current time is ' + str(current_time),
       'open': str(dictionaryInfo['open']),
       'close': str(dictionaryInfo['previousClose']),
