@@ -3,22 +3,24 @@ import datetime
 import yfinance as yf
 import numpy
 def handler(event, context):
-
-  stockInfo = yf.Ticker("GOOG")
+  stock = event['stock']
+  stockInfo = yf.Ticker(stock)
   dictionaryInfo = stockInfo.info
   current_time = datetime.datetime.now().time()
 
   body = {
-      'id': "1",
-      'message': 'Hello, the current time is ' + str(current_time),
-      'open': str(dictionaryInfo['open']),
-      'close': str(dictionaryInfo['previousClose']),
-      'bid': str(dictionaryInfo['bid']),
-      'ask':str(dictionaryInfo['ask']),
-      'volume': str(dictionaryInfo['volume']),
-      'pegRatio': str(dictionaryInfo['pegRatio']),
-      'trailingEps': str(dictionaryInfo['trailingEps']),
-      'forwardEps': str(dictionaryInfo['forwardEps'])
+      'data':{
+        'message': 'Hello, the current time is ' + str(current_time),
+        'open': str(dictionaryInfo['open']),
+        'close': str(dictionaryInfo['previousClose']),
+       'bid': str(dictionaryInfo['bid']),
+       'ask':str(dictionaryInfo['ask']),
+       'volume': str(dictionaryInfo['volume']),
+       'pegRatio': str(dictionaryInfo['pegRatio']),
+        'trailingEps': str(dictionaryInfo['trailingEps']),
+       'forwardEps': str(dictionaryInfo['forwardEps'])
+      }
+      
     }
 
   response = {

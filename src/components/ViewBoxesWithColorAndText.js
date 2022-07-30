@@ -12,8 +12,12 @@ const ViewBoxesWithColorAndText = () => {
      try {
         const apiName = 'pythonapi';
         const path = '/hello';
-      const json = await API.get(apiName, path).data;
-      setData(json);
+      const json = await API.get(apiName, path, {
+        'queryStringParameters': {
+          'stock': 'GOOG'
+        }
+      });
+      setData(json.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -30,11 +34,12 @@ const ViewBoxesWithColorAndText = () => {
       {isLoading ? <ActivityIndicator/> : (
         <FlatList
         data={data}
-        keyExtractor={({ id }, index) => id}
         renderItem={({ item }) => (
-          <Text>{item.message}, {item.open}</Text>
-        )}
-      />
+            <View>
+                <Text >{item.open}</Text>
+            </View>
+
+        )} />
       )}
     </View>
   );
