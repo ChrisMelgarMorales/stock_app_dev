@@ -3,7 +3,7 @@ import datetime
 import yfinance as yf
 import numpy
 def handler(event, context):
-  stock = event['stock']
+  stock = event["queryStringParameters"]['stock']
   stockInfo = yf.Ticker(stock)
   dictionaryInfo = stockInfo.info
   current_time = datetime.datetime.now().time()

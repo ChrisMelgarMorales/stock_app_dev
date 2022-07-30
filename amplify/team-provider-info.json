@@ -18,7 +18,7 @@
       "function": {
         "greetingfunction": {
           "deploymentBucketName": "amplify-stockappdev-staging-220359-deployment",
-          "s3Key": "amplify-builds/greetingfunction-4e4c3163456f6c586d31-build.zip"
+          "s3Key": "amplify-builds/greetingfunction-4567397a4e3969376444-build.zip"
         }
       }
     }
