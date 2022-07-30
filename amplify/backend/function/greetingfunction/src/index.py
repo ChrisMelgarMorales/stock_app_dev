@@ -9,17 +9,19 @@ def handler(event, context):
   current_time = datetime.datetime.now().time()
 
   body = {
-      'data':{
+      'data': [{
+        'id':"1",
         'message': 'Hello, the current time is ' + str(current_time),
         'open': str(dictionaryInfo['open']),
         'close': str(dictionaryInfo['previousClose']),
-       'bid': str(dictionaryInfo['bid']),
-       'ask':str(dictionaryInfo['ask']),
-       'volume': str(dictionaryInfo['volume']),
-       'pegRatio': str(dictionaryInfo['pegRatio']),
+        'bid': str(dictionaryInfo['bid']),
+        'ask':str(dictionaryInfo['ask']),
+        'volume': str(dictionaryInfo['volume']),
+        'pegRatio': str(dictionaryInfo['pegRatio']),
         'trailingEps': str(dictionaryInfo['trailingEps']),
-       'forwardEps': str(dictionaryInfo['forwardEps'])
+        'forwardEps': str(dictionaryInfo['forwardEps'])
       }
+      ]
       
     }
 

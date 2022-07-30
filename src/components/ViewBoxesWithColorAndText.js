@@ -36,7 +36,8 @@ const ViewBoxesWithColorAndText = () => {
         data={data}
         renderItem={({ item }) => (
             <View>
-                <Text >{item.open}</Text>
+                <Text>{item.message}</Text>
+                <Text>{item.open}</Text>
             </View>
 
         )} />
