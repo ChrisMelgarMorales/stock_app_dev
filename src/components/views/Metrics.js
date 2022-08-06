@@ -4,17 +4,21 @@ import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 // client request: fetching todos
 import { API } from 'aws-amplify';
 
-const ViewBoxesWithColorAndText = () => {
-    const [isLoading, setLoading] = useState(true);
+const Metrics = (props) => {
+  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getMovies = async () => {
+     
      try {
         const apiName = 'pythonapi';
-        const path = '/hello';
+        const path = '/func2';
       const json = await API.get(apiName, path, {
         'queryStringParameters': {
-          'stock': 'GOOG'
+          'stock': props.value,
+          'day': props.day,
+          'month': props.month,
+          'year': props.year
         }
       });
       setData(json.data);
@@ -26,7 +30,12 @@ const ViewBoxesWithColorAndText = () => {
   }
 
   useEffect(() => {
-    getMovies();
+    if(props.value !== '' ){
+      getMovies();
+    }
+    else{
+      setLoading(false);
+    }
   }, []);
 
   return (
@@ -36,8 +45,7 @@ const ViewBoxesWithColorAndText = () => {
         data={data}
         renderItem={({ item }) => (
             <View>
-                <Text>{item.message}</Text>
-                <Text>{item.open}</Text>
+                <Text>{props.stock}</Text>
             </View>
 
         )} />
@@ -45,27 +53,4 @@ const ViewBoxesWithColorAndText = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        textAlign: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 10,
-        marginVertical: 15,
-    },
-    cardbox:{
-        marginVertical:8,
-        marginHorizontal:5,
-        padding: 10,
-    },
-    title:{
-        backgroundColor: '#e2e2e2',
-        fontWeight: 'bold', 
-        textAlign:  'center',
-        borderRadius: 10,
-        paddingVertical: 5 ,
-    }
-});
-
-export default ViewBoxesWithColorAndText;
+export default Metrics;
