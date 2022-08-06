@@ -3,7 +3,8 @@ import { API } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './src/aws-exports';
-import ViewBoxesWithColorAndText from './src/components/ViewBoxesWithColorAndText.js';
+import {  Button } from 'react-native';
+import StockInfo from './src/panels/StockInfo';
 Amplify.configure(awsExports);
 
 
@@ -11,11 +12,13 @@ Amplify.configure(awsExports);
 
 
 function App({ signOut, user }) {
-  
+  //
   return (
     <>
       <h1>Hello {user.username}</h1>
-      <ViewBoxesWithColorAndText/>
+      
+      <StockInfo></StockInfo>
+      
 
       <button onClick={signOut}>Sign out</button>
     </>
