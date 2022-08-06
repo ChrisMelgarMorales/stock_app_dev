@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/func2": {
+      "name": "/func2",
+      "lambdaFunction": "stockappdev479608c0",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
