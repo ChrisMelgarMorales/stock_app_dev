@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View,Button } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Metrics from '../components/views/Metrics';
 
@@ -53,7 +53,12 @@ const Backtest = (props) => {
         setItems={setItems}
         onChangeValue={newStock => setStock(newStock)}
       />
-      <button onClick ={changeState} type = "button">send state</button>
+      <Button
+  onPress={changeState}
+  title="Learn More"
+  color="#841584"
+  accessibilityLabel="Learn more about this purple button"
+/>
       <Metrics value = {props.data} day = "01" year = "2020" month = "01"></Metrics>
     </View>
   );

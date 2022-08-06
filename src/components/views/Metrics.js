@@ -32,6 +32,7 @@ const Metrics = (props) => {
   useEffect(() => {
     if(props.value !== '' ){
       getMovies();
+      console.log("IWORKED");
     }
     else{
       setLoading(false);
@@ -45,7 +46,8 @@ const Metrics = (props) => {
         data={data}
         renderItem={({ item }) => (
             <View>
-                <Text>{props.stock}</Text>
+                <Text>{item.Start}</Text>
+
             </View>
 
         )} />

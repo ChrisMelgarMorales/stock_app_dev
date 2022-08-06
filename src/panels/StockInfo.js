@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import React, { useEffect, useState,useReducer } from 'react';
+import { Text, TextInput, View,Button } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import ViewBoxesWithColorAndText from '../components/views/ViewBoxesWithColorAndText';
 
-const StockInfo = () => {
+const StockInfo = (props) => {
+    const [_, forceUpdate] = useReducer((x) => x + 1, 0);
     const [value, setValue] = useState(null);
-    const [stock, setStock] = useState('');
+    const [stock, setStock] = useState(props.data);
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([
     {label: 'Chevron Corp.', value: 'cvx'},
@@ -39,9 +40,7 @@ const StockInfo = () => {
     {label: 'Procter & Gamble Co.', value: 'pg'},
     {label: 'Intel Corp.', value: 'intc'},
   ]);
-  const changeState = () => {  
-    setStock(stock); 
-   }; 
+
   return (
     <View style={{padding: 10}}>
 
@@ -52,9 +51,8 @@ const StockInfo = () => {
         setOpen={setOpen}
         setValue={setValue}
         setItems={setItems}
-        onChangeValue={newStock => setStock(newStock)}
+        onChangeValue={newValue=>setStock(newValue)}
       />
-      <button onClick ={changeState} type = "button">send state</button>
       <ViewBoxesWithColorAndText value = {stock}></ViewBoxesWithColorAndText>
     </View>
   );

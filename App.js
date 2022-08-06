@@ -6,12 +6,9 @@ import awsExports from './src/aws-exports';
 import {  Button } from 'react-native';
 import StockInfo from './src/panels/StockInfo';
 import Backtest from './src/panels/Backtest';
-import Portfolio from './src/panels/Portfolio';
+import {Portfolio} from './src/panels/Portfolio';
+
 Amplify.configure(awsExports);
-
-
-
-
 
 function App({ signOut, user }) {
   //
@@ -21,7 +18,12 @@ function App({ signOut, user }) {
       
       <StockInfo data = "GOOG"></StockInfo>
       <Backtest data = "GOOG"></Backtest>
-      <Portfolio></Portfolio>
+      <Button
+  onPress={Portfolio}
+  title="Learn More"
+  color="#841584"
+  accessibilityLabel="Learn more about this purple button"
+/>
       <button onClick={signOut}>Sign out</button>
     </>
   );
