@@ -42,6 +42,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "analystjson": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -60,6 +65,14 @@
         {
           "category": "function",
           "resourceName": "stockappdev479608c0",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "analystjson",
           "attributes": [
             "Name",
             "Arn"

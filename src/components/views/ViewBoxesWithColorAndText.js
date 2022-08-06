@@ -7,7 +7,7 @@ import { API } from 'aws-amplify';
 const ViewBoxesWithColorAndText = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-
+  
   const getMovies = async () => {
      
      try {
