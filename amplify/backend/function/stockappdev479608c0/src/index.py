@@ -8,6 +8,7 @@ from backtesting.lib import crossover
 from backtesting.test import SMA
 
 import numpy
+#Strategy 1 for backtesting
 class SmaCross(Strategy):
     n1 = 10
     n2 = 20
@@ -25,9 +26,6 @@ class SmaCross(Strategy):
 class Adapter:
     """
     Adapts an object by replacing methods.
-    Usage:
-    motorCycle = MotorCycle()
-    motorCycle = Adapter(motorCycle, wheels = motorCycle.TwoWheeler)
     """
  
     def __init__(self, obj, **adapted_methods):
@@ -42,6 +40,7 @@ class Adapter:
     def original_dict(self):
         """Print original object dict"""
         return self.obj.__dict__
+#Class for producing backtesting data from yfinance
 class YFinnance:
  
     """Class for MotorCycle"""
@@ -49,10 +48,11 @@ class YFinnance:
     def __init__(self):
         self.name = "yfin"
  
-    def TwoWheeler(self):
+    def yfinData(self):
         return "TwoWheeler"
  
- 
+#class for producing Backtesting data in correct format from
+#direct yahoo api request
 class DirectAPI:
 
     def __init__(self,day,month,year):
@@ -84,6 +84,7 @@ def handler(event, context):
   year = event["queryStringParameters"]['year']
   funds = event["queryStringParameters"]['funds']
   strat = event["queryStringParameters"]['strategy']
+  #Adapt Classes for getting data from yahoo to objects
   objects = []
   directAPI = DirectAPI(day,month,year)
   objects.append(Adapter(directAPI,getData = directAPI.apiData))
@@ -102,7 +103,7 @@ def handler(event, context):
               exclusive_orders=True)
 
     output = bt.run()
-
+  #output results to json file
   return {
       'statusCode': 200,
       'body': output.to_json(),
