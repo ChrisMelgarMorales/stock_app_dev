@@ -115,7 +115,7 @@ class DirectAPI:
         return data
     #convert json object to proper data frame
     def getDataFrame(self):
-        data = self.apiData(self)
+        data = self.apiData()
         result = pd.DataFrame()
         result['Open'] = pd.DataFrame(data['chart']['result'][0]['indicators']['quote'][0]['open'])
         result['High'] = pd.DataFrame(data['chart']['result'][0]['indicators']['quote'][0]['high'])

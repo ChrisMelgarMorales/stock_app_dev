@@ -8,7 +8,7 @@ export function Portfolio () {
 const PortfolioDetails = {
         ShorthandStockName: 'AAPL',
         Date: '2020-01-01',
-        Strategy: 'Simple'
+        Strategy: 'smacross'
       };
 async function asyncCall() {
     const newPortfolio = await API.graphql({ query: mutations.createPortfolio, variables: {input: PortfolioDetails}});
