@@ -76,7 +76,7 @@ class DataFormatA(Strategy):
     def do_algorithm(self, data) -> Dict:
         current_time = datetime.datetime.now().time()
         body = {
-        'data': [{
+          'data': [{
           'id':"1",
           'message': 'Hello, the current time is ' + str(current_time),
           'open': str(data['open']),
@@ -87,9 +87,8 @@ class DataFormatA(Strategy):
           'pegRatio': str(data['pegRatio']),
           'trailingEps': str(data['trailingEps']),
           'forwardEps': str(data['forwardEps'])
-         }
-        ]
-      }
+          }]
+        }
         return body
 #Similar strategy without ids or debug message
 #any other data formats for the json data
