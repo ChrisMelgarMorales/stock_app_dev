@@ -55,11 +55,14 @@ const Backtest = (props) => {
       />
       <Button
   onPress={changeState}
-  title="Learn More"
+  title="Submit Backtesting Parameters"
   color="#841584"
   accessibilityLabel="Learn more about this purple button"
 />
       <Metrics value = {props.data} day = "01" year = "2020" month = "01" funds ="100000" strat = "smacross"></Metrics>
+      <Text>01-01-2020 test at starting with 100000$ using smascross strategy requested</Text>
+      <Metrics value = {props.data} day = "01" year = "2020" month = "01" funds ="100000" strat = "smatrailcross"></Metrics>
+      <Text>01-01-2020 test at starting with 100000$ using smastrailcross strategy requested</Text>
     </View>
   );
 }
