@@ -55,11 +55,12 @@ class YFinnance:
 #direct yahoo api request
 class DirectAPI:
 
-    def __init__(self,day,month,year):
+    def __init__(self,day,month,year,symbol):
         self.name = "direct"
         self.day = day
         self.month = month
         self.year = year
+        self.symbol = symbol
  
     def apiData(self):
         #Convert querry date to unix at 8am
@@ -71,8 +72,6 @@ class DirectAPI:
         date_example = "{}/{}/{}, 08:00:0".format(dateObj.day,dateObj.month,dateObj.year)
         s2 = datetime.strptime(date_example, "%d/%m/%Y, %H:%M:%S")
         period2 = int(s2.timestamp())
-
-        symbol = event["queryStringParameters"]['stock']
          #read json data from yahoo querry
         data = pd.read_json("https://query1.finance.yahoo.com/v8/finance/chart/{sym}?symbol={sym}&period1={p1}&period2={p2}&interval=1d".format(sym = symbol,p1=period1,p2=period2))
         return data
@@ -84,9 +83,10 @@ def handler(event, context):
   year = event["queryStringParameters"]['year']
   funds = event["queryStringParameters"]['funds']
   strat = event["queryStringParameters"]['strategy']
+  symbol = event["queryStringParameters"]['stock']
   #Adapt Classes for getting data from yahoo to objects
   objects = []
-  directAPI = DirectAPI(day,month,year)
+  directAPI = DirectAPI(day,month,year,symbol)
   objects.append(Adapter(directAPI,getData = directAPI.apiData))
   data = objects[0].apiData()
   #set up data into relevant frames

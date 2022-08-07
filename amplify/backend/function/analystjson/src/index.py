@@ -6,12 +6,12 @@ def handler(event, context):
   stock = event["queryStringParameters"]['stock']
   stockInfo = yf.Ticker(stock)
 
-  df = stockInfo.analyst(orient="index")
+  df = stockInfo.recommendations
 
 
   response = {
       'statusCode': 200,
-      'body': df.to_json(),
+      'body': df.to_json(orient="index"),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

@@ -22,11 +22,11 @@
         },
         "stockappdev479608c0": {
           "deploymentBucketName": "amplify-stockappdev-staging-220359-deployment",
-          "s3Key": "amplify-builds/stockappdev479608c0-4b573462675237443756-build.zip"
+          "s3Key": "amplify-builds/stockappdev479608c0-4f59586b546371575659-build.zip"
         },
         "analystjson": {
           "deploymentBucketName": "amplify-stockappdev-staging-220359-deployment",
-          "s3Key": "amplify-builds/analystjson-666a5355654f45547937-build.zip"
+          "s3Key": "amplify-builds/analystjson-784631384a7462455337-build.zip"
         }
       }
     }
