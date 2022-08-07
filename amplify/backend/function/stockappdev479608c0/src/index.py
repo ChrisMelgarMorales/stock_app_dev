@@ -73,7 +73,7 @@ class DirectAPI:
         s2 = datetime.strptime(date_example, "%d/%m/%Y, %H:%M:%S")
         period2 = int(s2.timestamp())
          #read json data from yahoo querry
-        data = pd.read_json("https://query1.finance.yahoo.com/v8/finance/chart/{sym}?symbol={sym}&period1={p1}&period2={p2}&interval=1d".format(sym = symbol,p1=period1,p2=period2))
+        data = pd.read_json("https://query1.finance.yahoo.com/v8/finance/chart/{sym}?symbol={sym}&period1={p1}&period2={p2}&interval=1d".format(sym = self.symbol,p1=period1,p2=period2))
         return data
 
 def handler(event, context):

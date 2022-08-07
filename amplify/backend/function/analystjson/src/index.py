@@ -11,7 +11,7 @@ def handler(event, context):
 
   response = {
       'statusCode': 200,
-      'body': df.to_json(orient="index"),
+      'body': df.to_json(orient='records', lines=True),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
