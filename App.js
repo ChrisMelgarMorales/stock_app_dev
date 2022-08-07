@@ -14,13 +14,13 @@ function App({ signOut, user }) {
   //
   return (
     <>
-      <h1>Hello {user.username}</h1>
+      <h1>Hello userid {user.username}</h1>
       
       <StockInfo data = "GOOG"></StockInfo>
       <Backtest data = "GOOG"></Backtest>
       <Button
   onPress={Portfolio}
-  title="Learn More"
+  title="Insert Sample Portfolio Entry into Database and return to console"
   color="#841584"
   accessibilityLabel="Learn more about this purple button"
 />

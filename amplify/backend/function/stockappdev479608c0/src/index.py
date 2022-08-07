@@ -150,7 +150,7 @@ def handler(event, context):
               cash=int(funds), commission=.002,
               exclusive_orders=True)
 
-    output = bt.run()
+  output = bt.run()
   #output results to json file
   return {
       'statusCode': 200,

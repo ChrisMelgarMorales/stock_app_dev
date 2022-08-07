@@ -4,7 +4,7 @@ import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 // client request: fetching todos
 import { API } from 'aws-amplify';
 
-const ViewBoxesWithColorAndText = (props) => {
+const AnalystInfo = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   
@@ -12,13 +12,14 @@ const ViewBoxesWithColorAndText = (props) => {
      
      try {
         const apiName = 'pythonapi';
-        const path = '/hello';
+        const path = '/analyst';
       const json = await API.get(apiName, path, {
         'queryStringParameters': {
           'stock': props.value
         }
       });
       setData(json.data);
+      console.log(data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -36,26 +37,7 @@ const ViewBoxesWithColorAndText = (props) => {
   }, []);
 
   return (
-    <View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <ActivityIndicator/> : (
-        <FlatList
-        data={data}
-        renderItem={({ item }) => (
-            <View>
-                <Text>{props.stock}</Text>
-                <Text>Open: {item.open}</Text>
-                <Text>Close: {item.close}</Text>
-                <Text>Bid: {item.bid}</Text>
-                <Text>Ask: {item.ask}</Text>
-                <Text>Volume: {item.volume}</Text>
-                <Text>PEG Ratio: {item.pegRatio}</Text>
-                <Text>Trailing EPS: {item.trailingEps}</Text>
-                <Text>Forward EPS: {item.forwardEps}</Text>
-            </View>
-
-        )} />
-      )}
-    </View>
+    <Text>Check the console Network log for analyst Info</Text>
   );
 }
-export default ViewBoxesWithColorAndText;
+export default AnalystInfo;

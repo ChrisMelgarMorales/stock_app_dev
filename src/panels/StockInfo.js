@@ -1,7 +1,9 @@
 import React, { useEffect, useState,useReducer } from 'react';
 import { Text, TextInput, View,Button } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import ViewBoxesWithColorAndText from '../components/views/ViewBoxesWithColorAndText';
+import AnalystInfo from '../components/views/AnalystInfo';
+import BasicInfo from '../components/views/BasicInfo';
+
 
 const StockInfo = (props) => {
     const [_, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -53,7 +55,8 @@ const StockInfo = (props) => {
         setItems={setItems}
         onChangeValue={newValue=>setStock(newValue)}
       />
-      <ViewBoxesWithColorAndText value = {stock}></ViewBoxesWithColorAndText>
+      <BasicInfo value = {props.data}></BasicInfo>
+      <AnalystInfo value = {props.data}></AnalystInfo>
     </View>
   );
 }

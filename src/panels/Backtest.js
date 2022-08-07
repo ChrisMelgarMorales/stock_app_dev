@@ -59,7 +59,7 @@ const Backtest = (props) => {
   color="#841584"
   accessibilityLabel="Learn more about this purple button"
 />
-      <Metrics value = {props.data} day = "01" year = "2020" month = "01"></Metrics>
+      <Metrics value = {props.data} day = "01" year = "2020" month = "01" funds ="100000" strat = "smacross"></Metrics>
     </View>
   );
 }
