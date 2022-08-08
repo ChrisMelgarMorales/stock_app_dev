@@ -110,7 +110,7 @@ class DataFormatB(Strategy):
       
         return body
 
-class BodyFromStock():
+class StockInformation():
   #choose json data strategy based on parameter
   def getBody(stockName,strat):
     if strat == "a":
@@ -124,7 +124,7 @@ def handler(event, context):
   strat = event["queryStringParameters"]['strategy']
   response = {
       'statusCode': 200,
-      'body': json.dumps(BodyFromStock(stock,strat)),
+      'body': json.dumps(StockInformation(stock,strat)),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
