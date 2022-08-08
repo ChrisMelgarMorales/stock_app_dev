@@ -111,20 +111,24 @@ class DataFormatB(Strategy):
         return body
 
 class StockInformation():
+  def __init__(self,stock,strat):
+        self.strat = strat
+        self.stock = stock
   #choose json data strategy based on parameter
-  def getBody(stockName,strat):
+  def getBody(self):
     if strat == "a":
-      context = Context(DataFormatA,stockName)
+      context = Context(DataFormatA,self.stockName)
     else:
-      context = Context(DataFormatB,stockName)
-    return context.getJSONData(stockName)
+      context = Context(DataFormatB,self.stockName)
+    return context.getJSONData()
   
 def handler(event, context):
   stock = event["queryStringParameters"]['stock']
   strat = event["queryStringParameters"]['strategy']
+  object = StockInformation(stock,strat)
   response = {
       'statusCode': 200,
-      'body': json.dumps(StockInformation(stock,strat)),
+      'body': json.dumps(object.getBody()),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
