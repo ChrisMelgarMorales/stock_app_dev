@@ -45,7 +45,7 @@ const StockInfo = (props) => {
   ]);
 
   return (
-    <View style={{ padding: 10, marginBottom: 125 }}>
+    <View style={{ padding: 10, marginBottom: 130 }}>
       <DropDownPicker
         open={open}
         value={value}

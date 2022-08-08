@@ -45,7 +45,7 @@ const Backtest = (props) => {
     setStock(stock);
   };
   return (
-    <View style={{ padding: 10, marginBottom: 110 }}>
+    <View style={{ padding: 10, marginBottom: 100 }}>
       <DropDownPicker
         open={open}
         value={value}
