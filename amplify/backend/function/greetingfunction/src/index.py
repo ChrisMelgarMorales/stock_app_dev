@@ -116,10 +116,10 @@ class StockInformation():
         self.stock = stock
   #choose json data strategy based on parameter
   def getBody(self):
-    if strat == "a":
-      context = Context(DataFormatA,self.stockName)
+    if self.strat == "a":
+      context = Context(DataFormatA,self.stock)
     else:
-      context = Context(DataFormatB,self.stockName)
+      context = Context(DataFormatB,self.stock)
     return context.getJSONData()
   
 def handler(event, context):
