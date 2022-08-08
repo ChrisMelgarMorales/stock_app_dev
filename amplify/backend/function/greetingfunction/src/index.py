@@ -18,6 +18,7 @@ class Context():
         """
 
         self._strategy = strategy
+        self.stockName = stockName
 
     @property
     def strategy(self) -> Strategy:
