@@ -124,7 +124,31 @@ class DirectAPI:
         result['Volume'] = pd.DataFrame(data['chart']['result'][0]['indicators']['quote'][0]['volume'])
         return result
 
-
+class StockPortfolio():
+    def __init__(self,day,month,year,symbol,strat,funds):
+        self.day = day
+        self.month = month
+        self.year = year
+        self.symbol = symbol
+        self.strat = strat
+        self.funds = funds
+    def getBacktestOutput(self):
+        #Adapt Classes for getting data from yahoo to objects
+        objects = []
+        directAPI = DirectAPI(self.day,self.month,self.year,self.symbol)
+        objects.append(Adapter(directAPI,getData = directAPI.getDataFrame))
+        data = objects[0].getData()
+        #run the backtest
+        if self.strat.lower() == "smacross" :
+            bt = Backtest(data, SmaCross,
+              cash=int(self.funds), commission=.002,
+              exclusive_orders=True)
+        if self.strat.lower() == "smatrailcross" :
+            bt = Backtest(data, SmaTrailCross,
+              cash=int(self.funds), commission=.002,
+              exclusive_orders=True)
+        output = bt.run()
+        return output.to_json()
 def handler(event, context):
   #get querry parameters
   day = event["queryStringParameters"]['day']
@@ -133,28 +157,13 @@ def handler(event, context):
   funds = event["queryStringParameters"]['funds']
   strat = event["queryStringParameters"]['strategy']
   symbol = event["queryStringParameters"]['stock']
-  #Adapt Classes for getting data from yahoo to objects
-  objects = []
-  directAPI = DirectAPI(day,month,year,symbol)
-  objects.append(Adapter(directAPI,getData = directAPI.getDataFrame))
-  data = objects[0].getData()
+  object = StockPortfolio(day,month,year,symbol,strat,funds)
 
-
-  #run the backtest
-  if strat.lower() == "smacross" :
-    bt = Backtest(data, SmaCross,
-              cash=int(funds), commission=.002,
-              exclusive_orders=True)
-  if strat.lower() == "smatrailcross" :
-    bt = Backtest(data, SmaTrailCross,
-              cash=int(funds), commission=.002,
-              exclusive_orders=True)
-
-  output = bt.run()
   #output results to json file
+
   return {
       'statusCode': 200,
-      'body': output.to_json(),
+      'body': object.getBacktestOutput(),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
