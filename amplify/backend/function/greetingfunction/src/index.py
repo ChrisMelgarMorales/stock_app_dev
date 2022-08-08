@@ -1,10 +1,11 @@
+from __future__ import annotations
+from abc import ABC, abstractmethod
+from typing import Dict
 import json
 import datetime
 import yfinance as yf
 import numpy
-from __future__ import annotations
-from abc import ABC, abstractmethod
-from typing import Dict
+
 class Context():
     """
     The Context defines the interface of interest to clients.
