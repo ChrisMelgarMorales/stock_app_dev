@@ -45,7 +45,7 @@ const Backtest = (props) => {
     setStock(stock);
   };
   return (
-    <View style={{ padding: 10, marginBottom: 110 }}>
+    <View style={{ padding: 10, marginBottom: 50 }}>
       <DropDownPicker
         open={open}
         value={value}
@@ -70,7 +70,7 @@ const Backtest = (props) => {
         strat="smacross"
       ></Metrics>
       <Text>
-        01-01-2020 test at starting with 100000$ using smascross strategy
+        [01-01-2020] test at starting with $100000 using smascross strategy
         requested
       </Text>
       <Metrics
@@ -82,7 +82,7 @@ const Backtest = (props) => {
         strat="smatrailcross"
       ></Metrics>
       <Text>
-        01-01-2020 test at starting with 100000$ using smastrailcross strategy
+        [01-01-2020] test at starting with $100000 using smastrailcross strategy
         requested
       </Text>
     </View>

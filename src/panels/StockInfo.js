@@ -45,7 +45,7 @@ const StockInfo = (props) => {
   ]);
 
   return (
-    <View style={{ padding: 10, marginBottom: 100 }}>
+    <View style={{ padding: 24 }}>
       <DropDownPicker
         open={open}
         value={value}
@@ -55,8 +55,8 @@ const StockInfo = (props) => {
         setItems={setItems}
         onChangeValue={(newValue) => setStock(newValue)}
       />
-      <BasicInfo value = {props.data} strat = "a"></BasicInfo>
-      <AnalystInfo value = {props.data} lower = "365" upper ="180"></AnalystInfo>
+      <BasicInfo value={props.data} strat="a"></BasicInfo>
+      <AnalystInfo value={props.data} lower="365" upper="180"></AnalystInfo>
     </View>
   );
 };
