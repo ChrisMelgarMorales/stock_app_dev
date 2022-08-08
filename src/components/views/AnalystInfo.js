@@ -15,7 +15,9 @@ const AnalystInfo = (props) => {
         const path = '/analyst';
       const json = await API.get(apiName, path, {
         'queryStringParameters': {
-          'stock': props.value
+          'stock': props.value,
+          'lower': props.lower,
+          'upper': props.upper
         }
       });
       setData(json.data);
@@ -35,9 +37,22 @@ const AnalystInfo = (props) => {
       setLoading(false);
     }
   }, []);
-
   return (
-    <Text>Check the console Network log for analyst Info</Text>
+    <View style={{ flex: 1, padding: 24 }}>
+      {isLoading ? <ActivityIndicator/> : (
+        <FlatList
+        data={data}
+        renderItem={({ item }) => (
+            <View>
+                <Text>Check the console Network log for analyst Info</Text>
+                <Text>Firm: {item.Date}</Text>
+                <Text>Firm: {item.Firm}</Text>
+                <Text>Firm: {item.Action}</Text>
+            </View>
+
+        )} />
+      )}
+    </View>
   );
 }
 export default AnalystInfo;

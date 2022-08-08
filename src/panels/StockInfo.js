@@ -55,8 +55,8 @@ const StockInfo = (props) => {
         setItems={setItems}
         onChangeValue={newValue=>setStock(newValue)}
       />
-      <BasicInfo value = {props.data}></BasicInfo>
-      <AnalystInfo value = {props.data}></AnalystInfo>
+      <BasicInfo value = {props.data} strat = "a"></BasicInfo>
+      <AnalystInfo value = {props.data} lower = "365" upper ="180"></AnalystInfo>
     </View>
   );
 }

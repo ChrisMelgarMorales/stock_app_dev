@@ -16,7 +16,7 @@ const BasicInfo = (props) => {
       const json = await API.get(apiName, path, {
         'queryStringParameters': {
           'stock': props.value,
-          'strategy': "a"
+          'strategy': props.strat
         }
       });
       setData(json.data);
